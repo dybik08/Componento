@@ -1,11 +1,11 @@
 (() => {
     function anElement(element, props, children) {
         if (isClass(element)) {
-            return handleClass(element);
+            return handleClass(element, props);
         } else if (isStateLessComponent(element)) {
             return element(props);
         } else {
-            return handleHtmlElement(element, children);
+            return handleHtmlElement(element, props, children);
         }
     }
 
@@ -13,12 +13,12 @@
         return anElement(el, props, children);
     }
 
-    function handleClass(clazz) {
-        const component = new clazz();
+    function handleClass(clazz, props) {
+        const component = new clazz(props);
         return component.render();
     }
 
-    function handleHtmlElement(element, children) {
+    function handleHtmlElement(element, props, children) {
         const anElement = document.createElement(element);
         children.forEach(child => {
             if (typeof(child) === 'object') {
@@ -30,21 +30,20 @@
         return anElement;
     }
 
-    function isClass(func) {
-        return typeof func === 'function'
-            && /^class\s/.test(Function.prototype.toString.call(func));
-    }
-
-    function isStateLessComponent(element) {
-        return !isClass(element) && typeof element === 'function'
+    class Component {
+        constructor(props) {
+            this.props = props;
+        }
     }
 
     window.Componento = {
-        createElement
+        createElement,
+        Component
     };
     window.ComponentoDOM = {
         render: (el, domEl) => {
             domEl.appendChild(el);
         }
     };
+
 })();

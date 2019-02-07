@@ -1,7 +1,13 @@
+class Hello extends Componento.Component {
 
-const Hello = ({name}) => {
-    return Componento.createElement('div', null, `Hello ${name}`);
-};
+    constructor(props) {
+        super(props);
+    }
 
+    render() {
+        return Componento.createElement('div', null, `Hello ${this.props.name}`);
+    }
+}
 const helloWorld = Componento.createElement(Hello, {name: 'Ofir'}, null);
+
 ComponentoDOM.render(helloWorld, document.getElementById('root'));
