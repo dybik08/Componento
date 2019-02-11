@@ -4,6 +4,19 @@ const MyCoolJSXQuoteComponent = ({quote, author}) => {
         <div className="quote-container">
             <h4 className="quote">"{quote}"</h4>
             <div className="author">- {author}</div>
+            <Logger/>
+        </div>
+    );
+};
+
+const clicked = () => {
+    console.log('clicked2')
+};
+
+const Logger = () => {
+    return (
+        <div>
+            <button onClick={clicked}>Click me!</button>
         </div>
     );
 };

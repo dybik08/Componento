@@ -19,6 +19,23 @@ var MyCoolJSXQuoteComponent = function MyCoolJSXQuoteComponent(_ref) {
             { className: "author" },
             "- ",
             author
+        ),
+        Componento.createElement(Logger, null)
+    );
+};
+
+var clicked = function clicked() {
+    console.log('clicked2');
+};
+
+var Logger = function Logger() {
+    return Componento.createElement(
+        "div",
+        null,
+        Componento.createElement(
+            "button",
+            { onClick: clicked },
+            "Click me!"
         )
     );
 };
