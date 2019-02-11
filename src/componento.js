@@ -1,6 +1,6 @@
 
 (() => {
-    let rootDOMElement, rootReactElement;
+    let rootDOMElement, rootComponentoElement;
     const classMap = {};
     let classCounter = 0;
     const COMPONENTO_CLASS = 'COMPONENTO_CLASS';
@@ -77,7 +77,7 @@
         }
 
         classCounter = 1;
-        ComponentoDOM.render(rootReactElement, rootDOMElement);
+        ComponentoDOM.render(rootComponentoElement, rootDOMElement);
     }
 
     window.Componento = {
@@ -86,9 +86,9 @@
     };
     window.ComponentoDOM = {
         render: (el, domEl) => {
-            rootReactElement = el;
+            rootComponentoElement = el;
             rootDOMElement = domEl;
-            const currentDOM = rootReactElement.type === COMPONENTO_CLASS ? rootReactElement.render() : rootReactElement;
+            const currentDOM = rootComponentoElement.type === COMPONENTO_CLASS ? rootComponentoElement.render() : rootComponentoElement;
             rootDOMElement.appendChild(currentDOM);
         }
     };
